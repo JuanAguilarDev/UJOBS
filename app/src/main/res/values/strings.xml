@@ -1,14 +1,13 @@
 <resources>
     <string name="app_name">UJOBS</string>
-    <string name="str1_start">Encuentra u ofrece asesorías de cualquier tema</string>
-    <string name="str2_start">Descubre un basto repertorio de asesorías
-    las cuales puedes adquirir a un precio accesible</string>
-    <string name="btn_registrar">Registrarse</string>
-    <string name="btn_iniciar">Iniciar</string>
+    <string name="str1">Encuentra u ofrece asesorías de cualquier tema</string>
+    <string name="str2">Descubre un basto repertorio de asesorías las cuales puedes adquirir a un precio accesible</string>
     <string name="inicio">¡Crea una cuenta con nostros!</string>
     <string name="nombre">Nombre de usuario</string>
     <string name="email">Correo</string>
     <string name="estado">Estado</string>
-    <string name="password">Contraseña</string>
+    <string name="password">Contraseña (Minimo 8 caracteres)</string>
     <string name="crear">Crear Cuenta</string>
+    <string name="btnRegister">Registrarse</string>
+    <string name="btnAuth">Iniciar</string>
 </resources>

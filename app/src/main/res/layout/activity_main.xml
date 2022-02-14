@@ -9,10 +9,11 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="2"
-        android:orientation="vertical" >
+        android:background="#73FFFFFF"
+        android:orientation="vertical">
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -35,71 +36,62 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="2"
-        android:orientation="vertical"
-        >
+        android:background="#73FFFFFF"
+        android:orientation="vertical">
 
         <TextView
 
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center|clip_vertical"
-            android:textSize="30sp"
-            android:layout_marginVertical="30dp"
             android:layout_marginHorizontal="70dp"
+            android:layout_marginVertical="30dp"
+            android:gravity="center|clip_vertical"
+            android:text="@string/str1"
             android:textColor="@color/black"
-            android:textStyle="bold"
+            android:textSize="30sp"
 
-            android:text="@string/str1_start" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:gravity="center|clip_vertical"
-            android:text="@string/str2_start"
-            />
+            android:text="Descubre un basto repertorio de asesorías
+    las cuales puedes adquirir a un precio accesible" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="2.7"
+        android:background="#73FFFFFF"
         android:orientation="vertical">
 
-        <FrameLayout
+        <Button
+            android:id="@+id/btnRegister"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/bgButton"
-            android:layout_marginHorizontal="60dp">
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="40dp"
+            android:backgroundTint="@color/btnButtons"
+            android:onClick="register"
+            android:text="@string/btnRegister"
+            app:cornerRadius="50dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
 
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:layout_weight="1"
-
-                    android:backgroundTint="@color/bgButton"
-                    android:text="@string/btn_registrar"
-                    android:textColor="@color/black" />
-
-                <Button
-                    android:id="@+id/button4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:backgroundTint="@color/bgButton"
-                    android:textColor="@color/black"
-                    android:layout_weight="6"
-                    android:text="@string/btn_iniciar" />
-            </LinearLayout>
-        </FrameLayout>
+        <Button
+            android:id="@+id/btnAuth"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="40dp"
+            android:backgroundTint="@color/btnButtons"
+            android:text="@string/btnAuth"
+            app:cornerRadius="50dp" />
     </LinearLayout>
 </LinearLayout>
