@@ -81,6 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "Usuario creado", Toast.LENGTH_SHORT).show();
             Intent main = new Intent(this, MainActivity.class);
             startActivity(main);
+            finish();
         }
     }
 
