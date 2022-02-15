@@ -19,11 +19,23 @@ public class MainActivity extends AppCompatActivity {
 
         register = findViewById(R.id.btnRegister);
         auth = findViewById(R.id.btnAuth);
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                register(view);
+            }
+        });
+
+        auth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                auth(view);
+            }
+        });
     }
 
     // Options Method
-
-    // Register
     public void register(View view){
         Intent register = new Intent(this, RegisterActivity.class);
         startActivity(register);

@@ -12,4 +12,5 @@
     <color name="bgButton">#B2FFFFFF</color>
     <color name="btnReg">#5EFFFFFF</color>
     <color name="btnButtons">#1552F5</color>
+    <color name="textButton">#6A6A6A</color>
 </resources>

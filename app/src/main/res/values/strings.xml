@@ -10,4 +10,9 @@
     <string name="crear">Crear Cuenta</string>
     <string name="btnRegister">Registrarse</string>
     <string name="btnAuth">Iniciar</string>
+    <string name="welcometxt">Bienvenido de nuevo, ¡te hemos hechado de menos!</string>
+    <string name="fpassword">¿Ha olvidado su contraseña?</string>
+    <string name="resetxt">Restablecer contraseña</string>
+    <string name="resetMes">Ingrese el email asociado con su cuenta y nosotros le enviaremos las instrucciones para que pueda reiniciar su contraseña.</string>
+    <string name="btnRecovery">Enviar instrucciones</string>
 </resources>
