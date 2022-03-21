@@ -98,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
                         finish();
                     }else{
                         String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
-                        toastError(errorCode) ;
+                        toastError(errorCode);
                     }
                 }
             });

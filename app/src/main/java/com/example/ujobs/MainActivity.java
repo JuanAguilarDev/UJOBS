@@ -1,16 +1,22 @@
 package com.example.ujobs;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.util.PatternsCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.regex.Pattern;
+
 public class MainActivity extends AppCompatActivity {
 
     Button register;
     Button auth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         register = findViewById(R.id.btnRegister);
         auth = findViewById(R.id.btnAuth);
+
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,4 +54,5 @@ public class MainActivity extends AppCompatActivity {
         Intent auth = new Intent(this, AuthActivity.class);
         startActivity(auth);
     }
+
 }
