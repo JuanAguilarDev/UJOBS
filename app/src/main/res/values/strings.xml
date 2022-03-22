@@ -16,4 +16,8 @@
     <string name="resetMes">Ingrese el email asociado con su cuenta y nosotros le enviaremos las instrucciones para que pueda reiniciar su contraseña.</string>
     <string name="btnRecovery">Enviar instrucciones</string>
     <string name="asesorias">Asesorias</string>
+    <string name="all">Todas</string>
+    <string name="top">Populares</string>
+    <string name="hot">Lo mas nuevo</string>
+    <string name="welcome">Hola,</string>
 </resources>
