@@ -17,6 +17,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Pattern;
 
@@ -28,6 +29,7 @@ public class AuthActivity extends AppCompatActivity {
     TextInputLayout password;
     FirebaseAuth firebaseAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,10 +37,17 @@ public class AuthActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+
         btnRecovery = findViewById(R.id.forgotPassword);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         btnCreate = findViewById(R.id.btnYes);
+
+        if(user != null){
+            goToHome();
+        }
 
 
         btnRecovery.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +82,7 @@ public class AuthActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(AuthActivity.this, "Sesion iniciada. ", Toast.LENGTH_SHORT).show();
+                        goToHome();
                     }else{
                         String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
                         toastError(errorCode);
@@ -91,6 +101,14 @@ public class AuthActivity extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    public void goToHome(){
+        Intent home = new Intent(this, HomeActivity.class);
+        home.putExtra("mail",email.getEditText().getText().toString().trim());
+        home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(home);
+        finish();
     }
 
     public boolean validateEmail(){
