@@ -38,7 +38,7 @@ public class AuthActivity extends AppCompatActivity {
         btnRecovery = findViewById(R.id.forgotPassword);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        btnCreate = findViewById(R.id.btnCrear);
+        btnCreate = findViewById(R.id.btnYes);
 
 
         btnRecovery.setOnClickListener(new View.OnClickListener() {

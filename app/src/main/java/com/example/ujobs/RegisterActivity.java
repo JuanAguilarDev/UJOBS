@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ujobs.model.User;
@@ -25,14 +24,13 @@ import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
-
 import java.util.UUID;
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    Button btnCreate;
+    Button btnYes;
+    Button btnNo;
     Spinner sp;
     TextInputLayout name;
     TextInputLayout email;
@@ -55,7 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        btnCreate = findViewById(R.id.btnCrear);
+        btnYes = findViewById(R.id.btnYes);
+        btnNo = findViewById(R.id.btnNo);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.states, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp.setAdapter(adapter);
@@ -63,10 +62,19 @@ public class RegisterActivity extends AppCompatActivity {
         //  database
         firebaseStart();
 
-        btnCreate.setOnClickListener(new View.OnClickListener() {
+        // User isn´t and tutor
+        btnNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 createUser();
+            }
+        });
+
+        // User is a tutor
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createUserTutor();
             }
         });
 
@@ -93,6 +101,39 @@ public class RegisterActivity extends AppCompatActivity {
                         user.setEmail(email.getEditText().getText().toString().trim());
                         user.setState(sp.getSelectedItem().toString().trim());
                         user.setPassword(password.getEditText().getText().toString().trim());
+                        user.setIsTutor(false);
+                        databaseReference.child("User").child(user.getUid()).setValue(user);
+                        Toast.makeText(RegisterActivity.this, "Usuario creado", Toast.LENGTH_SHORT).show();
+                        Intent main = new Intent(RegisterActivity.this, MainActivity.class);
+                        startActivity(main);
+                        finish();
+                    }else{
+                        String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
+                        toastError(errorCode);
+                    }
+                }
+            });
+
+
+        }
+    }
+
+    public void createUserTutor(){
+        if(!validate()){
+            Toast.makeText(this, "Los datos no se han especificado de una correcta manera.", Toast.LENGTH_SHORT).show();
+            return;
+        }else{
+            firebaseAuth.createUserWithEmailAndPassword(email.getEditText().getText().toString().trim(), password.getEditText().getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        User user = new User();
+                        user.setUid(UUID.randomUUID().toString());
+                        user.setName(name.getEditText().getText().toString().trim());
+                        user.setEmail(email.getEditText().getText().toString().trim());
+                        user.setState(sp.getSelectedItem().toString().trim());
+                        user.setPassword(password.getEditText().getText().toString().trim());
+                        user.setIsTutor(true);
                         databaseReference.child("User").child(user.getUid()).setValue(user);
                         Toast.makeText(RegisterActivity.this, "Usuario creado", Toast.LENGTH_SHORT).show();
                         Intent main = new Intent(RegisterActivity.this, MainActivity.class);
@@ -117,7 +158,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }
         return true;
-    }
+    };
 
     public boolean validateEmail(){
         String em = email.getEditText().getText().toString().trim();
@@ -131,7 +172,7 @@ public class RegisterActivity extends AppCompatActivity {
             email.setError(null);
             return true;
         }
-    }
+    };
 
     public boolean validatePassword(){
 
@@ -162,7 +203,7 @@ public class RegisterActivity extends AppCompatActivity {
             password.setError(null);
             return true;
         }
-    }
+    };
 
     private void toastError(String error) {
 
@@ -241,5 +282,5 @@ public class RegisterActivity extends AppCompatActivity {
                 break;
 
         }
-    }
+    };
 }

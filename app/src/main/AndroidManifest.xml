@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UJOBS">
         <activity
-            android:name=".RegisterActivity2"
-            android:exported="false" />
-        <activity
             android:name=".HomeActivity$RegisterActivity2"
             android:exported="false" />
         <activity

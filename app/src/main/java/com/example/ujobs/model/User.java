@@ -6,6 +6,13 @@ public class User {
     private String email;
     private String state;
     private String password;
+    private Boolean isTutor;
+
+    public Boolean getIsTutor(){return isTutor; }
+
+    public void setIsTutor(boolean isTutor){
+        this.isTutor = isTutor;
+    }
 
     public String getUid(){
         return uid;
