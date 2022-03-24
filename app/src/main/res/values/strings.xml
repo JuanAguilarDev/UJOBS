@@ -20,4 +20,9 @@
     <string name="top">Populares</string>
     <string name="hot">Lo mas nuevo</string>
     <string name="welcome">Hola,</string>
+    <string name="byTeach">¡Conviertete en uno de nuestros asesores!</string>
+    <string name="next">Siguiente</string>
+    <string name="beOneOfUs">Al convertirte en uno de nuestros asesores puedes generar ingresos extra compartiendo tus conocimientos</string>
+    <string name="accept">Aceptar</string>
+    <string name="otherMoment">Quiza despues</string>
 </resources>
