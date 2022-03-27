@@ -25,4 +25,9 @@
     <string name="beOneOfUs">Al convertirte en uno de nuestros asesores puedes generar ingresos extra compartiendo tus conocimientos</string>
     <string name="accept">Aceptar</string>
     <string name="otherMoment">Quiza despues</string>
+    <string name="aboutUs">Acerca de nostros</string>
+    <string name="ujobsD">JAAL es una empresa enfocada en el desarrollo de software a medida</string>
+    <string name="products">Nuestros productos</string>
+    <string name="ujobs">UJOBS, de estudiantes para estudiantes</string>
+    <string name="title_activity_contact_us">ContactUsActivity</string>
 </resources>
