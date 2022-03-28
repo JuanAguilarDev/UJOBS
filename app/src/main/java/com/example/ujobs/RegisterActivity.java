@@ -128,8 +128,9 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
+                        String id = task.getResult().getUser().getUid().trim();
                         User user = new User();
-                        user.setUid(UUID.randomUUID().toString());
+                        user.setUid(id);
                         user.setName(name.getEditText().getText().toString().trim());
                         user.setEmail(email.getEditText().getText().toString().trim());
                         user.setState(sp.getSelectedItem().toString().trim());

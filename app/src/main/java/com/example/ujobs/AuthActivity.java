@@ -18,6 +18,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.regex.Pattern;
 
@@ -28,6 +33,8 @@ public class AuthActivity extends AppCompatActivity {
     TextInputLayout email;
     TextInputLayout password;
     FirebaseAuth firebaseAuth;
+    DatabaseReference databaseReference;
+    Boolean flag = false;
 
 
     @Override
@@ -40,6 +47,8 @@ public class AuthActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
 
         btnRecovery = findViewById(R.id.forgotPassword);
         email = findViewById(R.id.email);
@@ -47,7 +56,31 @@ public class AuthActivity extends AppCompatActivity {
         btnCreate = findViewById(R.id.btnYes);
 
         if(user != null){
-            goToHome();
+            String id = user.getUid().trim(); 
+            databaseReference.child("User").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+                        String isTutor = snapshot.child(id).child("isTutor").getValue().toString().trim();
+                        if(isTutor == "true"){
+                            Intent homeTutor = new Intent(AuthActivity.this, HomeTutorActivity.class);
+                            startActivity(homeTutor);
+                            finish();
+                        }else{
+                            Intent homeTutor = new Intent(AuthActivity.this, HomeActivity.class);
+                            startActivity(homeTutor);
+                            finish();
+                        }
+                    }else {
+                        Toast.makeText(AuthActivity.this, "No se han podido recuperar los datos.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         }
 
 
@@ -105,11 +138,36 @@ public class AuthActivity extends AppCompatActivity {
     }
 
     public void goToHome(){
-        Intent home = new Intent(this, HomeActivity.class);
-        home.putExtra("mail",email.getEditText().getText().toString().trim());
-        home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(home);
-        finish();
+
+        String id = firebaseAuth.getCurrentUser().getUid().trim();
+
+        databaseReference.child("User").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    String isTutor = snapshot.child(id).child("isTutor").getValue().toString().trim();
+                    if(isTutor == "true"){
+                        Intent homeTutor = new Intent(AuthActivity.this, HomeTutorActivity.class);
+                        startActivity(homeTutor);
+                        finish();
+                    }else{
+                        Intent homeTutor = new Intent(AuthActivity.this, HomeActivity.class);
+                        startActivity(homeTutor);
+                        finish();
+                    }
+
+                }else{
+                    Toast.makeText(AuthActivity.this, "Parece que estamos teniedo problemas", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
     }
 
     public boolean validateEmail(){

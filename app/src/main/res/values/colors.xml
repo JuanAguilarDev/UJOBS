@@ -15,4 +15,6 @@
     <color name="textButton">#6A6A6A</color>
     <color name="bgHome">#EBF7FE</color>
     <color name="btnTod">#5EC3FF</color>
+    <color name="logOut">#df4759</color>
+    <color name="msg">#5cb85c</color>
 </resources>

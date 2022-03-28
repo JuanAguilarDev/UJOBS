@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HomeActivity">
+    tools:context=".HomeTutorActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,6 +80,7 @@
         </LinearLayout>
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -88,66 +89,54 @@
         android:orientation="vertical">
 
 
-        <TextView
-            android:layout_marginTop="30dp"
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:text="@string/asesorias"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/buttons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
+            android:layout_marginVertical="10dp"
             android:layout_weight="3"
             android:orientation="vertical"
-            android:paddingHorizontal="17dp">
+            android:paddingHorizontal="17dp"
+            android:gravity="center">
 
-            <LinearLayout
-                android:id="@+id/tagsTop"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnCreate"
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:height="60dp"
+                android:layout_marginVertical="10dp"
+                android:backgroundTint="@color/btnTod"
+                android:drawableLeft="@drawable/add"
+                android:paddingHorizontal="70dp"
+                android:text="@string/create"
+                android:textColor="@color/white"
+                app:cornerRadius="30dp" />
 
-                <Button
-                    android:id="@+id/btnAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:height="60dp"
-                    android:backgroundTint="@color/btnTod"
-                    android:drawableLeft="@drawable/all"
-                    android:paddingHorizontal="140dp"
-                    android:text="@string/all"
-                    app:cornerRadius="30dp" />
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:height="60dp"
+                android:layout_marginVertical="10dp"
+                android:backgroundTint="@color/white"
+                android:drawableLeft="@drawable/update"
+                android:paddingHorizontal="70dp"
+                android:text="@string/edit"
+                android:textColor="@color/black"
+                app:cornerRadius="30dp" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/tagsBottom"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/button5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:height="60dp"
-                    android:backgroundTint="@color/white"
-                    android:drawableLeft="@drawable/new_icon"
-                    android:paddingHorizontal="133dp"
-                    android:text="@string/hot"
-                    android:textColor="@color/black"
-                    app:cornerRadius="30dp" />
-            </LinearLayout>
+            <Button
+                android:id="@+id/btnConversations"
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:height="60dp"
+                android:layout_marginVertical="10dp"
+                android:backgroundTint="@color/msg"
+                android:drawableLeft="@drawable/msg"
+                android:paddingHorizontal="70dp"
+                android:text="@string/conversations"
+                app:cornerRadius="30dp" />
 
         </LinearLayout>
 
@@ -156,11 +145,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".1"
+                android:paddingVertical="10dp"
+                android:paddingLeft="33dp"
+                android:textColor="@color/black"
+                android:text="@string/myCourses" />
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:contentDescription="Courses">
 
                 <LinearLayout

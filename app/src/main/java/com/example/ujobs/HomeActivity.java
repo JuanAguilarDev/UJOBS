@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button btn;
+    Button btnOut;
     TextView tvName;
     DatabaseReference databaseReference;
 
@@ -31,6 +31,9 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_home);
+
+        btnOut = findViewById(R.id.btnOut);
+
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -48,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
                     String name = snapshot.child(id).child("name").getValue().toString();
                     tvName.setText(name);
                 }else{
-
+                    Toast.makeText(HomeActivity.this, "Parece que estamos teniedo problemas", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -58,8 +61,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        btn = findViewById(R.id.btnAll);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 logOut();
@@ -69,7 +71,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void logOut(){
         FirebaseAuth.getInstance().signOut();
-        Toast.makeText(this, "Sesión cerrada!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Sesión cerrada con exito.", Toast.LENGTH_SHORT).show();
         goStart();
     }
 

@@ -18,7 +18,7 @@
     <string name="asesorias">Asesorias</string>
     <string name="all">Todas</string>
     <string name="top">Populares</string>
-    <string name="hot">Lo mas nuevo</string>
+    <string name="hot">Nuevo</string>
     <string name="welcome">Hola,</string>
     <string name="byTeach">¡Conviertete en uno de nuestros asesores!</string>
     <string name="next">Siguiente</string>
@@ -30,6 +30,10 @@
     <string name="products">Nuestros productos</string>
     <string name="ujobs">UJOBS, de estudiantes para estudiantes</string>
     <string name="title_activity_contact_us">ContactUsActivity</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logOut">Salir</string>
+    <string name="create">Nueva asesoria</string>
+    <string name="edit">Editar perfil</string>
+    <string name="conversations">Conversaciones</string>
+    <string name="myCourses">Mis cursos</string>
+
 </resources>
