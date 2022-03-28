@@ -37,4 +37,14 @@
     <string name="myCourses">Mis cursos</string>
     <string name="where">¿Donde estamos ubicados?</string>
     <string name="location">Priv. Lago Verde #94, Colonia Centro C.P 59300, La Piedad, Michoacán, Méx.</string>
+    <string name="createMentoring">Crea una asesoria para impartir</string>
+    <string name="nameMentoring">Nombre de la asesoria</string>
+    <string name="description">Descripcion de la asesoria</string>
+    <string name="createMentoringbtn">Crear</string>
+    <string name="home">Home</string>
+    <string name="aboutUsM">About Us</string>
+    <string name="whereM">Location</string>
+    <string name="welcomeTo">Bienvenido a UJOBS</string>
+    <string name="leyend">De estudiantes para estudiantes</string>
+
 </resources>

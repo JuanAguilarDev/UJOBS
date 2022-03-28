@@ -2,6 +2,7 @@ package com.example.ujobs.model;
 
 public class Course {
     private String uid;
+    private String authorId;
     private String topic;
     private String author;
     private String image;
@@ -12,6 +13,14 @@ public class Course {
     public void setDate(int month, int year){
         this.month = month;
         this.year = year;
+    }
+
+    public void setAuthorId(String id){
+        this.authorId = id;
+    }
+
+    public String getAuthorId(){
+        return authorId;
     }
 
     public int [] getDate(){

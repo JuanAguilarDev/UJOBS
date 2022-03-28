@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UJOBS">
         <activity
+            android:name=".DrawerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterMentoringActivity"
+            android:exported="false" />
+        <activity
             android:name=".WhereActivity"
             android:exported="false" />
         <activity
