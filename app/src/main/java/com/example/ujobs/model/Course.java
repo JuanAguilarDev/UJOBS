@@ -6,6 +6,18 @@ public class Course {
     private String author;
     private String image;
     private String description;
+    private int month;
+    private int year;
+
+    public void setDate(int month, int year){
+        this.month = month;
+        this.year = year;
+    }
+
+    public int [] getDate(){
+        int [] date = {month, year};
+        return date;
+    }
 
     public void setDescription(String description){
         this.description = description;
