@@ -35,5 +35,6 @@
     <string name="edit">Editar perfil</string>
     <string name="conversations">Conversaciones</string>
     <string name="myCourses">Mis cursos</string>
-
+    <string name="where">¿Donde estamos ubicados?</string>
+    <string name="location">Priv. Lago Verde #94, Colonia Centro C.P 59300, La Piedad, Michoacán, Méx.</string>
 </resources>

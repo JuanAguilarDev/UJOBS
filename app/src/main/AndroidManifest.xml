@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UJOBS">
         <activity
+            android:name=".WhereActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeTutorActivity"
             android:exported="false" />
         <!--
@@ -25,7 +28,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" />
+            android:value="${MAPS_API_KEY}" />
 
         <activity
             android:name=".AboutUsActivity"

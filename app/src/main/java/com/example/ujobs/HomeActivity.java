@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button btnOut;
+    Button btnOut, btnNew;
     TextView tvName;
     DatabaseReference databaseReference;
 
@@ -33,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         btnOut = findViewById(R.id.btnOut);
-
+        btnNew = findViewById(R.id.btnNew);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -65,6 +65,15 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 logOut();
+            }
+        });
+
+        btnNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, WhereActivity.class);
+                startActivity(intent);
+
             }
         });
     }
