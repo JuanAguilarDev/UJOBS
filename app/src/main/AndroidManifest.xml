@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UJOBS">
         <activity
-            android:name=".DrawerActivity"
+            android:name=".PaymentDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaypalActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterMentoringActivity"

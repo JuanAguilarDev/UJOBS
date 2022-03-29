@@ -34,11 +34,12 @@ public class RegisterMentoringActivity extends AppCompatActivity {
     TextInputLayout description;
     Spinner sp;
     FirebaseDatabase firebaseDatabase;
-
-
-    // Firebase
     DatabaseReference databaseReference;
-    String id;
+    Bundle extras;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +60,9 @@ public class RegisterMentoringActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp.setAdapter(adapter);
 
-        // Firebase
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        FirebaseUser user = mAuth.getCurrentUser();
-        id = user.getUid().trim();
+        // Extras
+        extras = getIntent().getExtras();
+
 
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,35 +80,19 @@ public class RegisterMentoringActivity extends AppCompatActivity {
 
 
     public void createMentoring(){
-        databaseReference.child("User").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    String author = snapshot.child(id).child("author").getValue().toString();
-                    String idAuthor = id;
-                    Course topic = new Course();
-                    topic.setUid(id);
-                    topic.setTopic(name.getEditText().getText().toString().trim());
-                    topic.setAuthor(author);
-                    topic.setImage(sp.getSelectedItem().toString().trim());
-                    topic.setUid(UUID.randomUUID().toString());
-                    topic.setAuthorId(idAuthor);
-                    // topic.setDate();
-                    databaseReference.child("Mentoring").child(topic.getUid()).setValue(topic);
-                    Toast.makeText(RegisterMentoringActivity.this, "Asesoria creada", Toast.LENGTH_SHORT).show();
-                    Intent HomeT = new Intent(RegisterMentoringActivity.this, HomeTutorActivity.class);
-                    startActivity(HomeT);
-                    finish();
-                }else{
-                    Toast.makeText(RegisterMentoringActivity.this, "No se han podido recuperar los datos. ", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
+        String idAuthor = extras.getString("id");
+        String nameAuthor = extras.getString("name");
+        Course topic = new Course();
+        topic.setTopic(name.getEditText().getText().toString().trim());
+        topic.setAuthor(nameAuthor);
+        topic.setImage(sp.getSelectedItem().toString().trim());
+        topic.setUid(UUID.randomUUID().toString());
+        topic.setAuthorId(idAuthor);
+        topic.setDescription(description.getEditText().getText().toString());
+        databaseReference.child("Mentoring").child(topic.getUid()).setValue(topic);
+        Toast.makeText(RegisterMentoringActivity.this, "Asesoria creada", Toast.LENGTH_SHORT).show();
+        Intent HomeT = new Intent(RegisterMentoringActivity.this, HomeTutorActivity.class);
+        startActivity(HomeT);
+        finish();
     }
 }

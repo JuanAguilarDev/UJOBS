@@ -7,13 +7,6 @@ public class Course {
     private String author;
     private String image;
     private String description;
-    private int month;
-    private int year;
-
-    public void setDate(int month, int year){
-        this.month = month;
-        this.year = year;
-    }
 
     public void setAuthorId(String id){
         this.authorId = id;
@@ -21,11 +14,6 @@ public class Course {
 
     public String getAuthorId(){
         return authorId;
-    }
-
-    public int [] getDate(){
-        int [] date = {month, year};
-        return date;
     }
 
     public void setDescription(String description){
@@ -66,6 +54,11 @@ public class Course {
 
     public void setUid(String uid){
         this.uid = uid;
+    }
+
+    @Override
+    public String toString(){
+        return topic;
     }
 
 }
