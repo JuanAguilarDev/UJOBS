@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                register(view);
+                registrar(view);
             }
         });
 
@@ -44,16 +45,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Options Method
-    public void register(View view){
-        Intent register = new Intent(this, RegisterActivity.class);
-        startActivity(register);
-    }
+
+
 
     // Login
     public void auth(View view){
         Intent auth = new Intent(this, AuthActivity.class);
         startActivity(auth);
     }
+    // Options Method
+    public void registrar(View view){
+        Intent register = new Intent(this,RegisterActivity.class);
+        startActivity(register);
+
+    }
+
+
 
 }
